@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Focus Flow</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <header>
+      <h1>Focus Flow</h1>
+      <div class="streak" id="streak">
+        <span class="streak-count" id="streakCount">0</span>
+        <span class="streak-label">sessions today</span>
+      </div>
+    </header>
+
+    <main>
+      <section class="timer-section">
+        <div class="mode-tabs" id="modeTabs">
+          <button class="mode-tab active" data-mode="focus">Focus</button>
+          <button class="mode-tab" data-mode="short">Short Break</button>
+          <button class="mode-tab" data-mode="long">Long Break</button>
+        </div>
+
+        <div class="ring-wrap">
+          <svg class="ring" width="280" height="280" viewBox="0 0 280 280">
+            <circle class="ring-bg" cx="140" cy="140" r="126"></circle>
+            <circle class="ring-progress" id="ringProgress" cx="140" cy="140" r="126"></circle>
+          </svg>
+          <div class="ring-center">
+            <div class="time" id="timeDisplay">25:00</div>
+            <div class="current-task" id="currentTaskLabel">No task selected</div>
+          </div>
+        </div>
+
+        <div class="controls">
+          <button class="btn secondary" id="resetBtn" title="Reset">↺</button>
+          <button class="btn primary" id="startPauseBtn">Start</button>
+          <button class="btn secondary" id="skipBtn" title="Skip">⏭</button>
+        </div>
+
+        <button class="settings-toggle" id="settingsToggle">⚙ Durations</button>
+        <div class="settings-panel" id="settingsPanel">
+          <label>Focus <input type="number" id="focusInput" min="1" max="90" value="25"> min</label>
+          <label>Short Break <input type="number" id="shortInput" min="1" max="30" value="5"> min</label>
+          <label>Long Break <input type="number" id="longInput" min="1" max="60" value="15"> min</label>
+          <button class="btn small" id="saveSettings">Save</button>
+        </div>
+      </section>
+
+      <section class="tasks-section">
+        <h2>Tasks</h2>
+        <form id="taskForm" class="task-form">
+          <input type="text" id="taskInput" placeholder="What are you working on?" autocomplete="off">
+          <button type="submit" class="btn primary small">Add</button>
+        </form>
+        <ul id="taskList" class="task-list"></ul>
+        <p class="empty-hint" id="emptyHint">No tasks yet — add one above and click it to focus on it.</p>
+      </section>
+    </main>
+
+    <footer>
+      <span id="totalStats">0 focus sessions completed · 0h 0m total</span>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
